@@ -242,6 +242,9 @@ function deletAll() {
         totalProduct();
         }
     }) 
+  rem();
+  datapro();
+  getTotale();
     
 }
 
