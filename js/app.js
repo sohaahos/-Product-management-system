@@ -1,4 +1,4 @@
-// == View input in variables ==
+// == Bring items ==
 let title = document.getElementById("input-title");
 let price = document.getElementById("input-price");
 let taxes = document.getElementById("input-taxes");
@@ -18,6 +18,7 @@ let mood = 'create';
 let assistant;
 
 
+//       === Add padding on click ===
 
 let myInputs = document.querySelectorAll("input");
 myInputs.forEach(input => {
@@ -34,7 +35,7 @@ myInputs.forEach(input => {
 
 
 
-//                                          ==== Data Management ====
+//         == Data Management ==
 
 let data;
 const jsonData = localStorage.getItem("product");
@@ -46,7 +47,7 @@ if (jsonData) {
 }
 
 
-// == Determine the total  ==
+//           == Determine the total ==
 
 function getTotale(){
     if (price.value != "" && price.value != 0) {
@@ -69,7 +70,7 @@ function getTotale(){
 
  
  
-// == When you press save ==
+//         == When you press save ==
 form.addEventListener('submit',function(event){
     event.preventDefault();
     Swal.fire(
@@ -92,7 +93,7 @@ form.addEventListener('submit',function(event){
 
 
 
-// == Save Products in localStorage ==
+//    == Save Products in localStorage ==
 function datapro() {
 
     let value_total = (+price.value ) + ((+taxes.value + +ads.value ) / +reductions.value);
@@ -118,7 +119,7 @@ function datapro() {
             data.push(nep); 
         }   
     }else{
-        data[assistant]=nep
+        data[assistant]=nep;
         mood = 'create'
         create.value = 'Create';
         qty.disabled = false;
@@ -179,7 +180,7 @@ totalProduct()
 
 
 
-// == Show the throw button ==
+// == Show the delete button ==
 function btnDe(){  
 let btnD = document.getElementById("btnDelet");
 if (data.length > 0) {
@@ -194,7 +195,7 @@ btnDe()
 
 
 
-// == delet product ==
+//    == delet product ==
 function delet(i) {
     Swal.fire({
         title: 'Are you sure?',
@@ -220,6 +221,8 @@ function delet(i) {
     })
     
 }
+
+//    == delet all product ==
 function deletAll() { 
     Swal.fire({
         title: 'Are you sure?',
@@ -242,16 +245,15 @@ function deletAll() {
         totalProduct();
         }
     }) 
-  rem();
-  datapro();
-  getTotale();
-    
+    rem();
+    datapro();
+    getTotale();
 }
 
 
 
 
-// == update
+// == update product ==
 function update(i) {  
     title.value = data[i].title;
     price.value = data[i].price;
@@ -288,6 +290,8 @@ function search(id){
     vipro()
 }
 
+
+//    == Show products when searching ==
 
 let table_pro ;
 function searchProduct(value) { 
@@ -342,83 +346,5 @@ window.onload = ()=>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function btnSe(val){  
-//     let b = document.getElementById("btnDelet");
-//     if (table_pro != '') {
-//         b.innerHTML = 
-//         '<button id="btnd" class="btn p-0" style="width: 100%; margin-left: 5px;">delet al</button>'
-//     }else{
-//         b.innerHTML = ""
-//     }
-//     for (let i = 0; i < data.length; i++) { 
-//         if (searchpro == 'title') {
-//             if (data[i].title.toUpperCase().includes(val.toUpperCase())){  
-//                 b.addEventListener('click',()=>{
-//                     data.splice(i,1)
-//                     localStorage.setItem("product", JSON.stringify(data));
-//                     document.querySelector("tbody").innerHTML = '';
-//                     vipro();;
-//                 })
-//             }
-//         }else{
-//             if (data[i].category.toUpperCase().includes(val.toUpperCase())) {
-//                 b.addEventListener('click',()=>{
-//                     data.splice(i,1)
-//                     localStorage.setItem("product", JSON.stringify(data));
-//                     document.querySelector("tbody").innerHTML = '';
-//                     vipro();
-//                 })
-//             }  
-//         } 
-//     }                   
-// } 
 
 
